@@ -21,10 +21,10 @@ balance INTEGER NOT NULL
 #for i in range(1, 11, 3):
 #    cursor.execute("DELETE FROM Users WHERE id = ?", (i,))
 
-#cursor.execute("SELECT username, email, age, balance FROM Users WHERE age != 60")
-#selected_users = cursor.fetchall()
-#for sl_usr in selected_users:
-#    print(sl_usr)
+cursor.execute("SELECT username, email, age, balance FROM Users WHERE age != 60")
+selected_users = cursor.fetchall()
+for sl_usr in selected_users:
+    print("Имя:", sl_usr[0], "| Email:", sl_usr[1], "| Возраст:", sl_usr[2], "| Баланс:", sl_usr[3], )
 
 connection.commit()
 connection.close()
