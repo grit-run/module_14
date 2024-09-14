@@ -11,15 +11,15 @@ age INTEGER,
 balance INTEGER NOT NULL
 )''')
 
-#for i in range(1,11):
-#    cursor.execute("INSERT INTO Users (username, email, age, balance) VALUES (?, ?, ?, ?)",
-#                   ("User{}".format(i), "User{}@example.com".format(i), i*10, i*1000))
+for i in range(1,11):
+    cursor.execute("INSERT INTO Users (username, email, age, balance) VALUES (?, ?, ?, ?)",
+                   ("User{}".format(i), "User{}@example.com".format(i), i*10, 1000))
 
-#for i in range(1, 11, 2):
-#    cursor.execute("UPDATE Users SET balance = ? WHERE id = ?", (500, i))
+for i in range(1, 11, 2):
+    cursor.execute("UPDATE Users SET balance = ? WHERE id = ?", (500, i))
 
-#for i in range(1, 11, 3):
-#    cursor.execute("DELETE FROM Users WHERE id = ?", (i,))
+for i in range(1, 11, 3):
+    cursor.execute("DELETE FROM Users WHERE id = ?", (i,))
 
 cursor.execute("SELECT username, email, age, balance FROM Users WHERE age != 60")
 selected_users = cursor.fetchall()
