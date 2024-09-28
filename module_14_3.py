@@ -54,7 +54,8 @@ buy_keys_inline = InlineKeyboardMarkup(
         [
             InlineKeyboardButton(text="продукт 1", callback_data="buy"),
             InlineKeyboardButton(text="продукт 2", callback_data="buy"),
-            InlineKeyboardButton(text="продукт 3", callback_data="buy")
+            InlineKeyboardButton(text="продукт 3", callback_data="buy"),
+            InlineKeyboardButton(text="продукт 4", callback_data="buy")
         ],
         [
             InlineKeyboardButton(text="Назад", callback_data="back")
@@ -86,9 +87,11 @@ async def get_buying_list(message):
     with open('files/images/AP1.jpg', 'rb') as img:
         await message.answer_photo(img, 'Название: 1 | Описание: описание 1 | Цена: 100p'.format(message))
     with open('files/images/AP2.png', 'rb') as img:
-        await message.answer_photo(img, 'Название: 2 | Описание: описание 3 | Цена: 150p'.format(message))
+        await message.answer_photo(img, 'Название: 2 | Описание: описание 2 | Цена: 150p'.format(message))
     with open('files/images/AP3.png', 'rb') as img:
-        await message.answer_photo(img, 'Название: 3 | Описание: описание 4 | Цена: 300p'.format(message))
+        await message.answer_photo(img, 'Название: 3 | Описание: описание 3 | Цена: 300p'.format(message))
+    with open('files/images/AP4.jpg', 'rb') as img:
+        await message.answer_photo(img, 'Название: 4 | Описание: описание 4 | Цена: 410p'.format(message))
     await message.answer('Выберите продукт для покупки:', reply_markup=buy_keys_inline)
 
 
