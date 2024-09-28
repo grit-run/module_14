@@ -2,7 +2,7 @@ import sqlite3
 
 
 def initiate_db():
-    conn = sqlite3.connect('database.db')
+    conn = sqlite3.connect('products.db')
     cur = conn.cursor()
     cur.execute('''
         CREATE TABLE IF NOT EXISTS Products (
@@ -12,6 +12,17 @@ def initiate_db():
         price int NOT NULL
         )
         ''')
+    conn = sqlite3.connect('users.db')
+    cur = conn.cursor()
+    cur.execute('''CREATE TABLE IF NOT EXISTS Users(
+        id INTEGER PRIMARY KEY,
+        username TEXT NOT NULL,
+        email TEXT NOT NULL,
+        age INTEGER NOT NULL,
+        balance INTEGER NOT NULL
+        )
+        ''')
+
     conn.commit()
     conn.close()
 
@@ -38,3 +49,20 @@ def check_add_product():
                          "{}".format((i * 100) / 5)))
     conn.commit()
     conn.close()
+
+
+def add_user(username, email, age):
+    conn = sqlite3.connect('users.db')
+    cur = conn.cursor()
+    cur.execute("INSERT INTO Users(username, email, age, balance) VALUES (?, ?, ?, 1000)", (username, email, age))
+    conn.commit()
+    conn.close()
+
+
+def is_included(username):
+    conn = sqlite3.connect('users.db')
+    cur = conn.cursor()
+    cur.execute('SELECT 1 FROM Users WHERE username = ?', (username,))
+    result = cur.fetchone()
+    conn.close()
+    return result is not None
